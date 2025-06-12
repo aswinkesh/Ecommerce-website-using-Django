@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f3f4f6;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 1024px;
+    }
+    
+    .card {
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        padding: 2rem;
+    }
+    
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+        .image-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+    .image-wrapper {
+        aspect-ratio: 4/3;
+        background-color: #f3f4f6;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+    
+    .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .image-wrapper img:hover {
+        transform: scale(1.05);
+    }
+    
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #111827;
+    }
+    
+    .description {
+        color: #4b5563;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .description p {
+        font-size: 1.125rem;
+        line-height: 1.75;
+    }
+    
+    .button-wrapper {
+        display: flex;
+        justify-content: center;
+        padding-top: 1.5rem;
+    }
+    
+    .buy-button {
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 9999px;
+        padding: 1rem 2rem;
+        font-size: 1.125rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background-color 0.3s ease;
+    }
+    
+    .buy-button:hover {
+        background-color: #1f2937;
+    }
+    
+    .buy-button svg {
+        transition: transform 0.3s ease;
+    }
+    
+    .buy-button:hover svg {
+        transform: translateX(4px);
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="image-grid">
+                <div class="image-wrapper">
+                    <img src="https://mandalameadow.com/wp-content/uploads/2020/06/Scroll-painting-India.jpg" alt="Product view 1">
+                </div>
+                <div class="image-wrapper">
+                    <img src="https://media.licdn.com/dms/image/v2/D5612AQGy-MNpml9r2w/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1689236191195?e=2147483647&v=beta&t=DEuU36ICUed2gI-R8G8CWlhVfgXyfmS4eA2b6x_Cjn4" alt="Product view 2">
+                </div>
+                <div class="image-wrapper">
+                    <img src="https://thumbs.dreamstime.com/b/painting-artist-beautiful-clay-pot-local-art-fair-bengal-india-41334181.jpg" alt="Product view 3">
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>ARTS</h2>
+                
+                <div class="description">
+                    <p>
+                        Celebrate the beauty of local arts with our unique collection of handcrafted creations. Each piece is a testament to the creativity 
+                        and passion of talented artisans, reflecting their dedication to preserving traditional craftsmanship while adding a modern flair.
+                    </p>
+                    <p>
+                        From stunning bottle art to intricately designed drawers and vibrant paintings, our platform showcases the finest work of local artists. 
+                        Whether you're an admirer of artistic expression or someone looking to add a personal touch to your space, you'll find something truly 
+                        inspiring here.
+                    </p>
+                    <p>
+                        By supporting local artists, you contribute to sustaining their craft and empowering their creativity. Join our mission to celebrate 
+                        artistry and tradition, and discover the joy of owning a one-of-a-kind piece that tells a story with NativeGoods.
+                    </p>
+                    
+                
+                </div>
+
+                <div class="button-wrapper">
+                    <a href="{% url 'category' %}?category=Arts" style='all:unset'> <button class="buy-button">
+                        <span>Buy Now</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="21" r="1"/>
+                            <circle cx="19" cy="21" r="1"/>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+                        </svg>
+                    </button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

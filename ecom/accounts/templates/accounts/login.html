@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce Login</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'accounts/styles.css' %}">
+</head>
+<body>
+  <div class="login-container">
+    <h1>Login</h1>
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+    
+    <form id="loginForm" method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your Username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="login-button">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="{%url 'signup'%}" id="registerLink">Register</a></p>
+
+    <div class="google-signin">
+      <button id="googleSignInButton" class="login-button">Sign in with Google</button>
+    </div>
+  </div>
+
+  <script defer type="module" src="{% static 'accounts/script.js' %}"></script>
+</body>
+</html>

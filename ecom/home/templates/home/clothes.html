@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f3f4f6;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 1024px;
+    }
+    
+    .card {
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        padding: 2rem;
+    }
+    
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+        .image-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+    .image-wrapper {
+        aspect-ratio: 4/3;
+        background-color: #f3f4f6;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+    
+    .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .image-wrapper img:hover {
+        transform: scale(1.05);
+    }
+    
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #111827;
+    }
+    
+    .description {
+        color: #4b5563;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .description p {
+        font-size: 1.125rem;
+        line-height: 1.75;
+    }
+    
+    .button-wrapper {
+        display: flex;
+        justify-content: center;
+        padding-top: 1.5rem;
+    }
+    
+    .buy-button {
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 9999px;
+        padding: 1rem 2rem;
+        font-size: 1.125rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background-color 0.3s ease;
+    }
+    
+    .buy-button:hover {
+        background-color: #1f2937;
+    }
+    
+    .buy-button svg {
+        transition: transform 0.3s ease;
+    }
+    
+    .buy-button:hover svg {
+        transform: translateX(4px);
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="image-grid">
+                <div class="image-wrapper">
+                    <img src="https://m.economictimes.com/thumb/msid-52473770,width-1200,height-1200,resizemode-4,imgsize-66735/how-local-tailors-are-partnering-with-ecommerce-firms-like-myntra-abof-com-to-fix-fitting-flaws.jpg" alt="Product view 1">
+                </div>
+                <div class="image-wrapper">
+                    <img src="https://i.tribune.com.pk/media/images/682850-artisans-1394809301/682850-artisans-1394809301.jpg" alt="Product view 2">
+                </div>
+                <div class="image-wrapper">
+                    <img src="https://media.istockphoto.com/id/1048992080/photo/indian-young-girl-sewing-stock-image.jpg?s=612x612&w=0&k=20&c=wVVgN7JS3n3V5PcLEwj40hNXihQ96pOriRSNznJRSWk=" alt="Product view 3">
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>CLOTHES & FOOTWEAR</h2>
+                
+                <div class="description">
+                    <p>
+                        Embrace the craftsmanship of skilled tailors and local artisans with our curated collection of clothing and footwear. Each piece is carefully crafted, blending timeless techniques with contemporary designs to deliver style, comfort, and individuality in every stitch and sole.  
+                    </p>
+                    <p>
+                        From bespoke tailoring to beautifully crafted local footwear and traditional attire, our platform highlights the incredible talent of local communities. Whether you're looking for custom clothing or unique, handmade pieces, you'll discover something truly special that resonates with your personal style.  
+                    </p>
+                    <p>
+                        Supporting local tailors and artisans helps preserve their traditions while empowering their livelihoods. Join us in celebrating their dedication to quality and creativity, and experience the charm of locally made clothing and footwear with NativeGoods.  
+                    </p>
+                    
+                
+                </div>
+
+                <div class="button-wrapper">
+                    <a href="{% url 'category' %}?category=Clothing-and-Footwear" style="all:unset"><button class="buy-button">
+                        <span>Buy Now</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="21" r="1"/>
+                            <circle cx="19" cy="21" r="1"/>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+                        </svg>
+                    </button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

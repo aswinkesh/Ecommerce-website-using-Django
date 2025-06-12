@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cart/cart.css' %}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-left">
+            <div class="logo">
+              <h1 style="font-size: 1.9rem;">NATIVE GOODS</h1>
+            </div>
+            <div class="nav-icons">
+                <button class="location-btn" id="location-btn">
+                    <i data-lucide="map-pin"></i>
+                    <span class="location-text" id="location-text">Click to get location</span>
+                </button>
+            </div>
+            
+            <script>
+            document.getElementById("location-btn").addEventListener("click", function () {
+                let locationText = document.getElementById("location-text");
+                locationText.innerText = "Fetching location...";
+            
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        function (position) {
+                            let lat = position.coords.latitude;
+                            let lon = position.coords.longitude;
+            
+                            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    let addressParts = data.display_name.split(", ");
+                                    let addressLength = addressParts.length;
+            
+                                    if (addressLength >= 4) {
+                                        // Get the 4th last and 3rd last parts of the address
+                                        let formattedAddress = `${addressParts[addressLength - 4]}, ${addressParts[addressLength - 3]}`;
+                                        locationText.innerText = formattedAddress;
+                                    } else {
+                                        locationText.innerText = data.display_name; // Fallback to full address if too short
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("Error fetching address:", error);
+                                    locationText.innerText = "Error fetching location";
+                                });
+                        },
+                        function (error) {
+                            locationText.innerText = "Location error";
+                            console.error("Error:", error);
+                        }
+                    );
+                } else {
+                    locationText.innerText = "Geolocation not supported";
+                }
+            });
+            </script>
+            
+          </div>
+          <a href="index1.html" class="continue-shopping">Continue Shopping</a>
+        </button>
+        </div>
+      </nav>
+      <div class="cart-header">
+        <h1>Your Cart</h1>
+    </div>
+
+    
+    <div class="cart-container">
+        <div id="cart-items"></div>
+        <div class="cart-summary">
+            <h2>Cart Summary</h2>
+            <p>Total Items: <span id="total-items">0</span></p>
+            <p>Total Amount: ₹<span id="total-price">0</span></p>
+            <button class="clear-cart" onclick="clearCart()">Clear Cart</button>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+        <div class="saved-container">
+            <h2>Saved for Later</h2>
+            <div id="saved-items"></div>
+        </div>        
+    </div>
+
+    <script src="{% static 'cart/cart.js' %}"></script>
+    <script> lucide.createIcons();</script>
+</body>
+</html>
