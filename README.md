@@ -1,0 +1,1 @@
+**Hyperlocal Marketplace** is a web platform that enables local sellers to showcase and sell handmade products online, offering easy store management, customer checkout, and order tracking with minimal technical effort.
